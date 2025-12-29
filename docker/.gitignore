@@ -1,0 +1,15 @@
+# Environment files with secrets
+.env
+graph-api-proxy/.env
+
+# Node modules
+graph-api-proxy/node_modules/
+
+# Backups
+backups/
+
+# Logs
+*.log
+
+# Docker volumes (managed by Docker)
+volumes/

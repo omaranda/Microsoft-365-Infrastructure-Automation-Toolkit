@@ -1,0 +1,41 @@
+apiVersion: 1
+
+datasources:
+  # Prometheus datasource
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+    jsonData:
+      httpMethod: POST
+      timeInterval: 30s
+
+  # Microsoft Graph API datasource (JSON plugin)
+  - name: Microsoft Graph API
+    type: marcusolsson-json-datasource
+    access: proxy
+    url: http://graph-api-proxy:3001
+    isDefault: false
+    editable: true
+    jsonData:
+      queryParams: ''
+    secureJsonData:
+      # Add if needed
+      apiKey: ''
+
+  # Azure Monitor datasource
+  # Note: Requires manual configuration of Azure credentials
+  - name: Azure Monitor
+    type: grafana-azure-monitor-datasource
+    access: proxy
+    isDefault: false
+    editable: true
+    jsonData:
+      cloudName: azuremonitor
+      subscriptionId: ''  # Set via environment variable or manual config
+      tenantId: ''        # Set via environment variable or manual config
+    secureJsonData:
+      clientId: ''        # Set via environment variable or manual config
+      clientSecret: ''    # Set via environment variable or manual config

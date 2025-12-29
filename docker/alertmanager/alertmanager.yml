@@ -1,0 +1,70 @@
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: 'localhost:25'
+  smtp_from: 'alertmanager@example.com'
+  smtp_require_tls: false
+
+# Email notification templates
+templates:
+  - '/etc/alertmanager/*.tmpl'
+
+# Route tree
+route:
+  group_by: ['alertname', 'cluster', 'service']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 12h
+  receiver: 'default'
+
+  routes:
+    # Critical alerts - immediate notification
+    - match:
+        severity: critical
+      receiver: 'critical-team'
+      continue: true
+
+    # Warning alerts - grouped notification
+    - match:
+        severity: warning
+      receiver: 'warning-team'
+      group_wait: 30s
+      group_interval: 5m
+
+# Receivers configuration
+receivers:
+  # Default receiver
+  - name: 'default'
+    email_configs:
+      - to: 'admin@example.com'
+        send_resolved: true
+        headers:
+          Subject: '[Monitoring] {{ .GroupLabels.alertname }}'
+
+  # Critical alerts team
+  - name: 'critical-team'
+    email_configs:
+      - to: 'critical-alerts@example.com'
+        send_resolved: true
+        headers:
+          Subject: '[CRITICAL] {{ .GroupLabels.alertname }}'
+    # Uncomment to add webhook (e.g., Slack, Teams)
+    # webhook_configs:
+    #   - url: 'https://hooks.slack.com/services/YOUR/WEBHOOK/URL'
+    #     send_resolved: true
+
+  # Warning alerts team
+  - name: 'warning-team'
+    email_configs:
+      - to: 'warnings@example.com'
+        send_resolved: true
+        headers:
+          Subject: '[WARNING] {{ .GroupLabels.alertname }}'
+
+# Inhibition rules
+inhibit_rules:
+  # Inhibit warning if critical is firing
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'instance']

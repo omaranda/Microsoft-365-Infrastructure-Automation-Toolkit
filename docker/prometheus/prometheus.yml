@@ -1,0 +1,84 @@
+# Prometheus configuration file
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+  external_labels:
+    cluster: 'docker-monitoring'
+    replica: '1'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+# Load alerting rules
+rule_files:
+  - '/etc/prometheus/rules/*.yml'
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          service: 'prometheus'
+
+  # Docker host metrics (Node Exporter)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+        labels:
+          service: 'node-exporter'
+          instance: 'docker-host'
+
+  # Container metrics (cAdvisor)
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+        labels:
+          service: 'cadvisor'
+
+  # Grafana metrics
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000']
+        labels:
+          service: 'grafana'
+
+  # Windows Servers with WMI Exporter
+  # Add your Windows servers here
+  - job_name: 'windows-servers'
+    scrape_interval: 30s
+    static_configs:
+      - targets:
+          # Example: Replace with your actual Windows server IPs
+          # - 'windows-server-01.domain.com:9182'
+          # - 'windows-server-02.domain.com:9182'
+          # - '192.168.1.10:9182'
+          # - '192.168.1.11:9182'
+        labels:
+          os: 'windows'
+          environment: 'production'
+    # Uncomment if using basic auth
+    # basic_auth:
+    #   username: 'prometheus'
+    #   password: 'your-password'
+
+  # Azure Monitor (if using Azure Monitor exporter)
+  - job_name: 'azure-monitor'
+    scrape_interval: 60s
+    static_configs:
+      - targets: []
+        # Note: Azure Monitor is typically queried via Grafana plugin
+        # This is placeholder for custom exporters
+
+  # Custom application metrics
+  - job_name: 'custom-apps'
+    static_configs:
+      - targets: []
+        # Add your custom application exporters here
+        labels:
+          environment: 'production'

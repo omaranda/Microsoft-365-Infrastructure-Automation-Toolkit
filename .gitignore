@@ -1,0 +1,84 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# PowerShell
+*.ps1xml
+*.cdxml
+*.clixml
+
+# Credentials and sensitive data
+*.pfx
+*.p12
+*.pem
+*.key
+*.crt
+*.cer
+credentials.json
+secrets.json
+config.json
+*.credential
+*.secret
+*.password
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+*.trace
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+*.swp
+*.swo
+*~
+
+# Output and artifacts
+output/
+artifacts/
+exports/
+reports/
+*.csv
+*.xlsx
+*.zip
+*.tar.gz
+
+# IDE and Editor
+.vscode/
+.idea/
+*.code-workspace
+.vs/
+
+# Claude
+.claude/
+
+# Node modules (if using any JS tooling)
+node_modules/
+
+# Python (if using any Python scripts)
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+venv/
+env/
+
+# Test results
+TestResults/
+*.trx
+
+# Backup files
+*.bak
+*.backup
+*~
