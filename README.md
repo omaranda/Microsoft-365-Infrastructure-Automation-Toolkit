@@ -1,4 +1,4 @@
-# Microsoft 365 & Infrastructure Management Tools
+# Microsoft 365 & Infrastructure Automation Toolkit
 
 Complete PowerShell automation toolkit with Grafana monitoring for Microsoft infrastructure.
 
