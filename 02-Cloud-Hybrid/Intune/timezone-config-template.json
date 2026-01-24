@@ -1,0 +1,74 @@
+{
+  "Mexico": {
+    "GroupName": "QuietHours-Mexico-TimeZone",
+    "Description": "Users in Mexico time zone (Central Standard Time)",
+    "TimeZoneId": "Central Standard Time (Mexico)",
+    "TimeZoneDisplayName": "Mexico City (UTC-6)",
+    "UTCOffset": -6,
+    "WorkingHoursStart": "09:00",
+    "WorkingHoursEnd": "18:00",
+    "QuietHoursStart": "18:00",
+    "QuietHoursEnd": "09:00",
+    "IncludeWeekends": true
+  },
+  "Europe-Central": {
+    "GroupName": "QuietHours-Europe-CET",
+    "Description": "Users in Central European Time zone (Madrid, Paris, Berlin)",
+    "TimeZoneId": "Romance Standard Time",
+    "TimeZoneDisplayName": "Central Europe (UTC+1)",
+    "UTCOffset": 1,
+    "WorkingHoursStart": "09:00",
+    "WorkingHoursEnd": "18:00",
+    "QuietHoursStart": "18:00",
+    "QuietHoursEnd": "09:00",
+    "IncludeWeekends": true
+  },
+  "Europe-UK": {
+    "GroupName": "QuietHours-Europe-UK",
+    "Description": "Users in UK time zone (London)",
+    "TimeZoneId": "GMT Standard Time",
+    "TimeZoneDisplayName": "London (UTC+0)",
+    "UTCOffset": 0,
+    "WorkingHoursStart": "09:00",
+    "WorkingHoursEnd": "18:00",
+    "QuietHoursStart": "18:00",
+    "QuietHoursEnd": "09:00",
+    "IncludeWeekends": true
+  },
+  "Americas-East": {
+    "GroupName": "QuietHours-Americas-EST",
+    "Description": "Users in US Eastern Time zone",
+    "TimeZoneId": "Eastern Standard Time",
+    "TimeZoneDisplayName": "New York (UTC-5)",
+    "UTCOffset": -5,
+    "WorkingHoursStart": "09:00",
+    "WorkingHoursEnd": "18:00",
+    "QuietHoursStart": "18:00",
+    "QuietHoursEnd": "09:00",
+    "IncludeWeekends": true
+  },
+  "Americas-Pacific": {
+    "GroupName": "QuietHours-Americas-PST",
+    "Description": "Users in US Pacific Time zone (Los Angeles)",
+    "TimeZoneId": "Pacific Standard Time",
+    "TimeZoneDisplayName": "Los Angeles (UTC-8)",
+    "UTCOffset": -8,
+    "WorkingHoursStart": "09:00",
+    "WorkingHoursEnd": "18:00",
+    "QuietHoursStart": "18:00",
+    "QuietHoursEnd": "09:00",
+    "IncludeWeekends": true
+  },
+  "Asia-India": {
+    "GroupName": "QuietHours-Asia-IST",
+    "Description": "Users in India Standard Time zone",
+    "TimeZoneId": "India Standard Time",
+    "TimeZoneDisplayName": "Mumbai (UTC+5:30)",
+    "UTCOffset": 5.5,
+    "WorkingHoursStart": "10:00",
+    "WorkingHoursEnd": "19:00",
+    "QuietHoursStart": "19:00",
+    "QuietHoursEnd": "10:00",
+    "IncludeWeekends": true
+  }
+}
